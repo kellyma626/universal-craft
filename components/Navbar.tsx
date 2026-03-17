@@ -5,7 +5,7 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 z-50 w-full">
+    <nav className="sticky top-0 z-50 w-full bg-craft-pearl">
       <div className="bg-craft-espresso text-white text-center text-xs py-2 tracking-widest">
         FREE SHIPPING ON ORDERS $100 AND OVER!
       </div>
@@ -17,7 +17,7 @@ const Navbar = () => {
             className="flex items-center gap-2 text-xs text-craft-espresso hover:text-craft-rose cursor-pointer"
           >
             <FaHeart className="text-lg" />
-            Visit Our Store for More
+            Visit Our Store
           </Link>
           <Link href="/" className="absolute left-1/2 -translate-x-1/2">
             <h1 className="font-georgia text-3xl text-craft-espresso tracking-wide hover:text-craft-rose cursor-pointer">
