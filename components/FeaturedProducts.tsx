@@ -6,7 +6,7 @@ const FeaturedProducts = () => {
   const featuredProducts = products.filter((p) => p.featured);
 
   return (
-    <section className="bg-craft-petal">
+    <section className="border-b border-craft-espresso bg-craft-petal">
       <SectionHeader
         title="Featured Products"
         subtitle="shop our featured products online."
