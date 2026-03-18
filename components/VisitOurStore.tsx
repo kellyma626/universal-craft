@@ -5,10 +5,8 @@ const VisitOurStore = () => {
   return (
     <section className="border-b border-craft-espresso flex min-h-125">
       <div className="w-1/2 bg-craft-cream flex flex-col justify-center px-16 gap-6">
-        <h2 className="font-pinyon text-6xl text-craft-espresso">
-          Visit Our Store
-        </h2>
-        <p className="font-georgia text-lg text-craft-espresso leading-relaxed">
+        <h2 className="font-pinyon text-6xl">Visit Our Store</h2>
+        <p className="font-georgia text-lg leading-relaxed">
           Shop in store.
           <br />
           Visit us for cake and cupcake stands, metal vases,
@@ -22,7 +20,7 @@ const VisitOurStore = () => {
         >
           405 San Pedro St, Los Angeles, CA 90013
         </Link>
-        <p className="font-inter text-xs text-craft-espresso">
+        <p className="text-xs">
           Monday - Saturday, 9am - 4:30pm
           <br />
           Business hours may vary.

@@ -8,13 +8,11 @@ const Hero = () => {
       style={{ backgroundImage: "url('/hero.png')" }}
     >
       <div className="text-center">
-        <h1 className="font-georgia text-6xl text-craft-espresso mb-4">
-          Universal Craft, Inc.
-        </h1>
-        <p className="font-georgia text-xl text-craft-espresso mb-2">
+        <h1 className="font-georgia text-6xl mb-4">Universal Craft, Inc.</h1>
+        <p className="font-georgia text-xl mb-2">
           Decor and Crafts for Every Occasion
         </p>
-        <p className="font-inter text-sm text-craft-espresso mb-8">
+        <p className="text-sm mb-8">
           Weddings, quinceañeras, baby showers, and more!
         </p>
         <Link

@@ -14,17 +14,21 @@ const Navbar = () => {
           <Link
             href="https://maps.google.com/?q=Universal+Craft+Los+Angeles"
             target="_blank"
-            className="flex items-center gap-2 text-xs text-craft-espresso hover:text-craft-rose cursor-pointer"
+            className="flex items-center gap-2 text-xs hover:underline cursor-pointer"
           >
             <FaHeart className="text-lg" />
             Visit Our Store
           </Link>
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-            <h1 className="font-georgia text-3xl text-craft-espresso tracking-wide hover:text-craft-rose cursor-pointer">
+          <Link
+            href="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="absolute left-1/2 -translate-x-1/2"
+          >
+            <h1 className="font-pinyon text-3xl tracking-wide cursor-pointer">
               Universal Craft
             </h1>
           </Link>
-          <button className="flex items-center gap-2 text-xs text-craft-espresso hover:text-craft-rose cursor-pointer">
+          <button className="flex items-center gap-2 text-xs hover:underline cursor-pointer">
             <FaShoppingCart className="text-lg" />
             View My Cart
           </button>
@@ -34,7 +38,7 @@ const Navbar = () => {
             <Link
               key={name}
               href={href}
-              className="text-xs tracking-widest text-craft-espresso hover:text-craft-rose"
+              className="text-xs tracking-widest hover:underline font-medium"
             >
               {name}
             </Link>
