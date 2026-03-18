@@ -3,7 +3,7 @@ import ProductCard from './ProductCard';
 import SectionHeader from './SectionHeader';
 
 const FeaturedProducts = () => {
-  const featuredProducts = products.filter((p) => p.featured);
+  const featuredProducts = products.filter((p) => p.type === 'online');
 
   return (
     <section className="border-b border-craft-espresso bg-craft-petal">

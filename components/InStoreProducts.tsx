@@ -4,7 +4,7 @@ import SectionHeader from './SectionHeader';
 import Link from 'next/link';
 
 const InStoreProducts = () => {
-  const inStoreProducts = products.filter((p) => p.inStore);
+  const inStoreProducts = products.filter((p) => p.type === 'inStore');
 
   return (
     <section className="bg-craft-petal">
