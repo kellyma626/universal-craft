@@ -5,7 +5,7 @@ const VisitOurStore = () => {
   return (
     <section className="border-b border-craft-espresso flex min-h-125">
       <div className="w-1/2 bg-craft-cream flex flex-col justify-center px-16 gap-6">
-        <h2 className="font-pinyon text-6xl">Visit Our Store</h2>
+        <h2 className="font-pinyon text-5xl">Visit Our Store</h2>
         <p className="font-georgia text-lg leading-relaxed">
           Shop in store.
           <br />
