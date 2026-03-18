@@ -27,10 +27,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
 
       <div className="flex flex-col gap-1">
-        <p className="text-sm text-craft-espresso">{product.name}</p>
-        <p className="text-sm text-craft-espresso">
-          ${product.price.toFixed(2)}
-        </p>
+        <p className="text-sm">{product.name}</p>
+        <p className="text-sm">${product.price.toFixed(2)}</p>
       </div>
 
       <button

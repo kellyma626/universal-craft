@@ -34,7 +34,7 @@ const CustomerReviews = () => {
       <div className="flex items-center justify-between px-6 sm:px-10 lg:px-20 py-16">
         <button
           onClick={prev}
-          className="text-craft-espresso hover:text-craft-rose hover:cursor-pointer"
+          className="hover:text-craft-rose hover:cursor-pointer"
         >
           <FaChevronLeft size={20} />
         </button>
@@ -46,19 +46,19 @@ const CustomerReviews = () => {
                 <FaStar key={i} className="text-craft-rose" size={16} />
               ))}
             </div>
-            <p className="text-xs text-craft-espresso uppercase tracking-widest">
+            <p className="text-xs uppercase tracking-widest">
               {review.product}
             </p>
           </div>
-          <p className="font-georgia text-craft-espresso leading-relaxed line-clamp-4">
+          <p className="font-georgia leading-relaxed line-clamp-4">
             &ldquo;{review.text}&rdquo;
           </p>
-          <p className="text-sm text-craft-espresso">— {review.name}</p>
+          <p className="text-sm">— {review.name}</p>
         </div>
 
         <button
           onClick={next}
-          className="text-craft-espresso hover:text-craft-rose hover:cursor-pointer"
+          className="hover:text-craft-rose hover:cursor-pointer"
         >
           <FaChevronRight size={20} />
         </button>

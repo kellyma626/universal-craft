@@ -13,10 +13,8 @@ const BestsellerSection = () => {
         />
       </div>
       <div className="w-1/2 bg-craft-petal flex flex-col justify-center px-16 gap-6">
-        <h2 className="font-pinyon text-6xl text-craft-espresso">
-          Our Bestseller
-        </h2>
-        <p className="font-georgia text-lg text-craft-espresso leading-relaxed">
+        <h2 className="font-pinyon text-6xl">Our Bestseller</h2>
+        <p className="font-georgia text-lg leading-relaxed">
           Shop our bestselling product.
           <br />
           Artificial foam roses.

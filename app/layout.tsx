@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter, Pinyon_Script } from 'next/font/google';
+import { Inter, Pinyon_Script, DM_Serif_Display } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -11,6 +12,12 @@ const inter = Inter({
 
 const pinyon = Pinyon_Script({
   variable: '--font-pinyon',
+  subsets: ['latin'],
+  weight: ['400'],
+});
+
+const dmSerif = DM_Serif_Display({
+  variable: '--font-dmSerif',
   subsets: ['latin'],
   weight: ['400'],
 });
@@ -27,9 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ colorScheme: 'light' }}>
-      <body className={`${inter.variable} ${pinyon.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${pinyon.variable} ${dmSerif.variable} antialiased`}
+      >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
