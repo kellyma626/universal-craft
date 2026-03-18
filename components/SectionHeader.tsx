@@ -8,7 +8,7 @@ interface SectionHeaderProps {
 const SectionHeader = ({ title, subtitle }: SectionHeaderProps) => {
   return (
     <div className="border-b border-craft-espresso flex items-center justify-between px-6 sm:px-10 lg:px-20 py-8 bg-craft-cream">
-      <h2 className="font-pinyon font-medium text-5xl">{title}</h2>
+      <h2 className="font-pinyon text-6xl">{title}</h2>
       <p className="font-georgia text-lg">{subtitle}</p>
     </div>
   );
