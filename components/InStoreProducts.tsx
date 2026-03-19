@@ -7,7 +7,7 @@ const InStoreProducts = () => {
   const inStoreProducts = products.filter((p) => p.type === 'inStore');
 
   return (
-    <section className="bg-craft-petal">
+    <section className="border-b border-craft-espresso bg-craft-petal">
       <SectionHeader
         title="In-store Products"
         subtitle={
