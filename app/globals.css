@@ -32,3 +32,8 @@ body {
 .font-dmSerif {
   font-family: "DM Serif Display", serif;
 }
+
+select:focus {
+  outline: 2px solid var(--color-craft-rose);
+  outline-offset: 0px;
+}
