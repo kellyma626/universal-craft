@@ -37,3 +37,8 @@ select:focus {
   outline: 2px solid var(--color-craft-rose);
   outline-offset: 0px;
 }
+
+input:focus {
+  outline: 2px solid var(--color-craft-rose);
+  outline-offset: 0px;
+}

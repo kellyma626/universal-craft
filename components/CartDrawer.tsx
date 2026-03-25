@@ -86,9 +86,19 @@ const CartDrawer = () => {
             <p className="font-georgia">${totalPrice.toFixed(2)}</p>
           </div>
           <Link
-            href="/checkout"
-            onClick={closeCart}
-            className="w-full bg-craft-rose text-white text-sm py-3 rounded-full text-center hover:opacity-90 transition-opacity"
+            href={items.length === 0 ? '#' : '/checkout'}
+            onClick={(e) => {
+              if (items.length === 0) {
+                e.preventDefault();
+                return;
+              }
+              closeCart();
+            }}
+            className={`w-full text-sm py-3 rounded-full text-center transition-opacity ${
+              items.length === 0
+                ? 'bg-[#5F5F5F] text-white cursor-not-allowed'
+                : 'bg-craft-rose text-white hover:opacity-90'
+            }`}
           >
             Proceed to Checkout
           </Link>
