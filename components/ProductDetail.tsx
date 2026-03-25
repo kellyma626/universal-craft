@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/data/Products';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useCart } from '@/context/CartContext';
 
 const ProductDetail = ({ product }: { product: Product }) => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -16,6 +17,25 @@ const ProductDetail = ({ product }: { product: Product }) => {
     setCurrentImage((i) => (i === 0 ? product.images.length - 1 : i - 1));
   const next = () =>
     setCurrentImage((i) => (i === product.images.length - 1 ? 0 : i + 1));
+
+  const { addItem, openCart } = useCart();
+
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedSize) {
+      alert('Please select a color and size!');
+      return;
+    }
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      color: selectedColor,
+      size: selectedSize,
+      quantity,
+    });
+    openCart();
+  };
 
   return (
     <div className="flex gap-12">
@@ -83,7 +103,6 @@ const ProductDetail = ({ product }: { product: Product }) => {
           </select>
         </div>
 
-        {/* Size selector */}
         <div className="flex flex-col gap-1">
           <label className="text-sm">Size</label>
           <select
@@ -128,6 +147,7 @@ const ProductDetail = ({ product }: { product: Product }) => {
 
         {product.type === 'online' && (
           <button
+            onClick={handleAddToCart}
             disabled={isSoldOut}
             className={`w-96 px-12 py-3 mt-5 rounded-full text-white text-sm transition-opacity ${
               isSoldOut

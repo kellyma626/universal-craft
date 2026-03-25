@@ -2,8 +2,10 @@
 import Link from 'next/link';
 import { navLinks } from '@/data/Navbar';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '@/context/CartContext';
 
 const Navbar = () => {
+  const { openCart, totalItems } = useCart();
   return (
     <nav className="sticky top-0 z-50 w-full bg-craft-pearl">
       <div className="bg-craft-espresso text-white text-center text-xs py-2 tracking-widest">
@@ -28,9 +30,12 @@ const Navbar = () => {
               Universal Craft
             </h1>
           </Link>
-          <button className="flex items-center gap-2 text-xs hover:underline cursor-pointer">
+          <button
+            onClick={openCart}
+            className="flex items-center gap-2 text-xs hover:underline cursor-pointer"
+          >
             <FaShoppingCart className="text-lg" />
-            View My Cart
+            View My Cart {totalItems > 0 && `(${totalItems})`}
           </button>
         </div>
         <div className="flex justify-center gap-8 mt-5">

@@ -3,6 +3,8 @@ import { Inter, Pinyon_Script, DM_Serif_Display } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { CartProvider } from '@/context/CartContext';
+import CartDrawer from '@/components/CartDrawer';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -37,9 +39,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${pinyon.variable} ${dmSerif.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

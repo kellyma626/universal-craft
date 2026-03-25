@@ -30,7 +30,9 @@ const Footer = () => {
             Privacy Policy
           </Link>
         </div>
-        <p className="text-xs">© 2026 Universal Craft. All rights reserved.</p>
+        <p className="text-xs">
+          © {new Date().getFullYear()} Universal Craft. All rights reserved.
+        </p>
       </div>
     </footer>
   );
