@@ -6,7 +6,6 @@ export interface Product {
   images: string[];
   badge?: 'BESTSELLER' | 'SOLD OUT';
   type: 'online' | 'inStore';
-  weight?: number;
   colors: string[];
   sizes: string[];
   details: string[];
