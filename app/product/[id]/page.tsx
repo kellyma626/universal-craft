@@ -13,7 +13,7 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   return (
-    <main className="border-b border-craft-espresso  px-6 sm:px-10 lg:px-20 py-12 bg-craft-cream min-h-screen">
+    <main className="border-b border-craft-espresso px-6 sm:px-10 lg:px-20 py-12 bg-craft-cream min-h-screen">
       <ProductDetail product={product} />
     </main>
   );
