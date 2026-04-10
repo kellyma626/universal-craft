@@ -2,8 +2,18 @@
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
+import { useAuth } from '@/context/AuthContext';
+import { FaGoogle } from 'react-icons/fa';
 
 const CheckoutForm = () => {
+  const { user, signIn, signUp, signInWithGoogle, logOut } = useAuth();
+  const [authMode, setAuthMode] = useState<'guest' | 'signin' | 'signup'>(
+    'guest'
+  );
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+
   const { items, totalPrice } = useCart();
   const [form, setForm] = useState({
     fullName: '',
@@ -33,6 +43,110 @@ const CheckoutForm = () => {
   return (
     <div className="flex gap-8">
       <div className="flex-1 flex flex-col gap-6">
+        {/* Auth section */}
+        {!user ? (
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-4">
+              <button
+                onClick={() => setAuthMode('guest')}
+                className={`text-sm px-4 py-2 rounded-full border transition-colors ${
+                  authMode === 'guest'
+                    ? 'bg-craft-espresso text-white border-craft-espresso'
+                    : 'border-craft-petal hover:border-craft-espresso'
+                }`}
+              >
+                Continue As A Guest
+              </button>
+              <button
+                onClick={() => setAuthMode('signin')}
+                className={`text-sm px-4 py-2 rounded-full border transition-colors ${
+                  authMode === 'signin'
+                    ? 'bg-craft-espresso text-white border-craft-espresso'
+                    : 'border-craft-petal hover:border-craft-espresso'
+                }`}
+              >
+                Sign in
+              </button>
+              <button
+                onClick={() => setAuthMode('signup')}
+                className={`text-sm px-4 py-2 rounded-full border transition-colors ${
+                  authMode === 'signup'
+                    ? 'bg-craft-espresso text-white border-craft-espresso'
+                    : 'border-craft-petal hover:border-craft-espresso'
+                }`}
+              >
+                Create account
+              </button>
+            </div>
+
+            {authMode !== 'guest' && (
+              <div className="flex flex-col gap-3">
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  className={inputClass}
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  className={inputClass}
+                />
+                {authError && (
+                  <p className="text-xs text-red-500">{authError}</p>
+                )}
+                <button
+                  onClick={async () => {
+                    setAuthError('');
+                    try {
+                      if (authMode === 'signin')
+                        await signIn(authEmail, authPassword);
+                      else await signUp(authEmail, authPassword);
+                    } catch (err: unknown) {
+                      if (err instanceof Error) setAuthError(err.message);
+                    }
+                  }}
+                  className="bg-craft-espresso text-white text-sm px-6 py-2 rounded-full w-fit hover:opacity-90"
+                >
+                  {authMode === 'signin' ? 'Sign in' : 'Create account'}
+                </button>
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 h-px bg-craft-petal" />
+                  <p className="text-xs">or</p>
+                  <div className="flex-1 h-px bg-craft-petal" />
+                </div>
+                <button
+                  onClick={async () => {
+                    try {
+                      await signInWithGoogle();
+                    } catch (err: unknown) {
+                      if (err instanceof Error) setAuthError(err.message);
+                    }
+                  }}
+                  className="flex items-center justify-center gap-2 bg-white border-2 border-craft-petal text-sm px-6 py-2 rounded-full hover:border-craft-rose transition-colors"
+                >
+                  <FaGoogle size={14} />
+                  Continue with Google
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="flex items-center justify-between p-4 bg-white rounded-2xl border-2 border-craft-petal">
+            <p className="text-sm">
+              Signed in as <span className="font-georgia">{user.email}</span>
+            </p>
+            <button
+              onClick={logOut}
+              className="text-xs hover:text-craft-rose hover:underline"
+            >
+              Sign out
+            </button>
+          </div>
+        )}
         <div className="flex flex-col gap-4">
           <h2 className="font-georgia text-xl">Shipping Information</h2>
           <input

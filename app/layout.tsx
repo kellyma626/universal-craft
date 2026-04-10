@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CartContext';
 import CartDrawer from '@/components/CartDrawer';
+import { AuthProvider } from '@/context/AuthContext';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -39,12 +40,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${pinyon.variable} ${dmSerif.variable} antialiased`}
       >
-        <CartProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <CartDrawer />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
