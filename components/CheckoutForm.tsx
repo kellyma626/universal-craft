@@ -4,6 +4,7 @@ import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 import { useAuth } from '@/context/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
+import StripePaymentForm from '@/components/StripePaymentForm';
 
 const CheckoutForm = () => {
   const { user, signIn, signUp, signInWithGoogle, logOut } = useAuth();
@@ -24,6 +25,8 @@ const CheckoutForm = () => {
     state: '',
     zip: '',
   });
+
+  const [showPayment, setShowPayment] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -263,16 +266,21 @@ const CheckoutForm = () => {
           </div>
         </div>
 
-        <button
-          disabled={!isFormValid}
-          className={`text-white text-sm px-8 py-3 rounded-full w-fit transition-opacity ${
-            isFormValid
-              ? 'bg-craft-rose hover:opacity-90'
-              : 'bg-[#5F5F5F] cursor-not-allowed'
-          }`}
-        >
-          Checkout ${totalPrice.toFixed(2)}
-        </button>
+        {!showPayment ? (
+          <button
+            disabled={!isFormValid}
+            onClick={() => setShowPayment(true)}
+            className={`text-white text-sm px-8 py-3 rounded-full w-fit transition-opacity ${
+              isFormValid
+                ? 'bg-craft-rose hover:opacity-90'
+                : 'bg-gray-400 cursor-not-allowed'
+            }`}
+          >
+            Continue to Payment
+          </button>
+        ) : (
+          <StripePaymentForm shippingInfo={form} />
+        )}
       </div>
 
       <div className="w-96 flex flex-col gap-4">
